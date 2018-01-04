@@ -5,6 +5,7 @@ configatron.command_prefix = 'YOUR_PREFIX'
 configatron.command_channel = "YOUR_COMMAND_CHANNEL"
 configatron.member_role_name = "YOUR_MEMBER_ROLE"
 configatron.everyone_role_name = 'YOUR_EVERYONE_ROLE'
+configatron.moderator_role_name = 'YOUR_MODERATOR_ROLE'
 configatron.private_group_flag = "YOUR_PRIVATE_GROUP_FLAG"
 configatron.public_role_flag = '[G]'
 

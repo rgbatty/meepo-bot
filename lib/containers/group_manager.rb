@@ -48,8 +48,8 @@ module GroupManager
             else
                 result_text = configatron.group_does_not_exist
             end
-    
-            result_text
+            
+            resolve_private_group_result_text(event, group_role, result_text )
         else
             event.message.delete
         end
@@ -70,7 +70,7 @@ module GroupManager
                 result_text = configatron.does_not_belong_to_group
             end
     
-            result_text
+            resolve_private_group_result_text(event, group_role, result_text )
         else
             event.message.delete
         end
@@ -90,10 +90,10 @@ module GroupManager
                 new_role = create_group(event, group_type, group_name)
                 event.user.add_role(new_role)
         
-                result_text = resolve_private_group_result_text(event, new_role, configatron.group_created )
+                result_text = configatron.group_created
             end
         
-            result_text
+            resolve_private_group_result_text(event, new_role, result_text )
         else
             event.message.delete
         end
@@ -102,7 +102,7 @@ module GroupManager
     command :delete, description: configatron.delete_help do |event, group_name|
         if in_command_channel?(event)
             group_role = find_group_role(event, group_name)
-            moderator_role = event.server.roles.find { |role| role.name.downcase == "Moderator".downcase }
+            moderator_role = event.server.roles.find { |role| role.name.downcase == configatron.moderator_role_name.downcase }
             
             if !event.user.roles.include?(moderator_role)
                 result_text = configatron.not_a_mod
@@ -111,12 +111,12 @@ module GroupManager
                 channels.each { |channel| channel.delete }
                 group_role.delete
 
-                result_text = resolve_private_group_result_text(event, group_role, configatron.group_deleted)
+                result_text = configatron.group_deleted
             else 
                 result_text = configatron.group_does_not_exist
             end
             
-            result_text
+            resolve_private_group_result_text(event, group_role, result_text)
         else
             event.message.delete
         end
