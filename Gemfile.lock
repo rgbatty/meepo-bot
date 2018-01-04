@@ -16,6 +16,7 @@ GEM
   specs:
     coderay (1.1.2)
     configatron (4.5.1)
+    daemons (1.2.6)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     event_emitter (0.2.6)
@@ -51,6 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   configatron
+  daemons
   discordrb!
   pry
 
